@@ -45,6 +45,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:system` | System info and disk usage | `/docker:system df` |
 | `/docker:tag` | Tag images | `/docker:tag myapp:latest myapp:v1` |
 | `/docker:cp` | Copy files to/from containers | `/docker:cp api:/logs ./` |
+| `/docker:history` | Show image layer history | `/docker:history nginx` |
+| `/docker:diff` | Show container filesystem changes | `/docker:diff api` |
 | `/docker:push` | Push to registries | `/docker:push myapp:v1 ghcr.io/user` |
 | `/docker:clean` | Remove unused resources | `/docker:clean --all` |
 
@@ -147,6 +149,16 @@ Create a new tag for an image.
 Copy files between container and host.
 - `container:/path` for container paths
 - Works with running or stopped containers
+
+#### `/docker:history <image>`
+Show image layer history.
+- See Dockerfile commands that created layers
+- `--no-trunc` - Show full commands
+
+#### `/docker:diff <container>`
+Show container filesystem changes.
+- `A` - Added, `C` - Changed, `D` - Deleted
+- Useful for debugging and auditing
 
 #### `/docker:push <image:tag> [registry]`
 Push images to container registries.
