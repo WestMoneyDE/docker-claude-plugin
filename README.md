@@ -61,6 +61,7 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:top` | Display container processes | `/docker:top api` |
 | `/docker:port` | List port mappings | `/docker:port api` |
 | `/docker:system` | System info and disk usage | `/docker:system df` |
+| `/docker:version` | Show Docker version info | `/docker:version` |
 | `/docker:events` | Real-time Docker daemon events | `/docker:events --filter container=api` |
 | `/docker:context` | Manage multi-environment contexts | `/docker:context use prod` |
 | `/docker:tag` | Tag images | `/docker:tag myapp:latest myapp:v1` |
@@ -260,6 +261,12 @@ Manage Docker system resources.
 - `df` - Show disk usage
 - `prune` - Remove unused data
 - `info` - System information
+
+#### `/docker:version`
+Show Docker version information.
+- Displays client and server versions
+- Shows API version compatibility
+- Use `--format` for specific fields
 
 #### `/docker:events [options]`
 Get real-time events from the Docker daemon.
