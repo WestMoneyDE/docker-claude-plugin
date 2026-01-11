@@ -51,6 +51,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:diff` | Show container filesystem changes | `/docker:diff api` |
 | `/docker:kill` | Kill containers immediately | `/docker:kill api` |
 | `/docker:wait` | Wait for containers to stop | `/docker:wait job` |
+| `/docker:login` | Log in to a registry | `/docker:login ghcr.io` |
+| `/docker:logout` | Log out from a registry | `/docker:logout` |
 | `/docker:push` | Push to registries | `/docker:push myapp:v1 ghcr.io/user` |
 | `/docker:clean` | Remove unused resources | `/docker:clean --all` |
 
@@ -183,6 +185,16 @@ Kill containers immediately with a signal.
 Wait for containers to stop, return exit codes.
 - Blocks until container exits
 - Useful in CI/CD scripts
+
+#### `/docker:login [registry]`
+Log in to a Docker registry.
+- Docker Hub, GitHub, AWS ECR, GCR
+- `--password-stdin` for secure auth
+
+#### `/docker:logout [registry]`
+Log out from a Docker registry.
+- Removes stored credentials
+- Default: Docker Hub
 
 #### `/docker:push <image:tag> [registry]`
 Push images to container registries.
