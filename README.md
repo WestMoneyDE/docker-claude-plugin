@@ -31,7 +31,9 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:build` | Build Docker images | `/docker:build myapp:v1` |
 | `/docker:buildx` | Multi-platform builds | `/docker:buildx build --platform linux/amd64,linux/arm64` |
 | `/docker:run` | Run containers | `/docker:run nginx --port 8080:80` |
+| `/docker:create` | Create container without starting | `/docker:create --name api nginx` |
 | `/docker:start` | Start stopped containers | `/docker:start api` |
+| `/docker:attach` | Attach to running container | `/docker:attach api` |
 | `/docker:stop` | Stop running containers | `/docker:stop api` |
 | `/docker:pause` | Pause container processes | `/docker:pause api` |
 | `/docker:unpause` | Unpause paused containers | `/docker:unpause api` |
@@ -86,6 +88,16 @@ Run containers with common options.
 - `-e KEY=VALUE` - Environment variables
 - `--name` - Container name
 - Defaults to detached mode with auto-cleanup
+
+#### `/docker:create <image> [options]`
+Create a container without starting it.
+- Same options as `docker run`
+- Useful for pre-configuration
+
+#### `/docker:attach <container>`
+Attach to a running container's streams.
+- Detach with `Ctrl+P, Ctrl+Q`
+- `--no-stdin` for view-only
 
 #### `/docker:start <container>`
 Start stopped containers.
