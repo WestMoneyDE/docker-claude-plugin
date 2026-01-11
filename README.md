@@ -45,6 +45,7 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:update` | Update container resources | `/docker:update api --memory 1g` |
 | `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
 | `/docker:pull` | Pull images from registries | `/docker:pull nginx:alpine` |
+| `/docker:search` | Search Docker Hub for images | `/docker:search nginx` |
 | `/docker:images` | List local images | `/docker:images` |
 | `/docker:rmi` | Remove images | `/docker:rmi myapp:old` |
 | `/docker:save` | Save images to tar archive | `/docker:save myapp -o myapp.tar` |
@@ -60,6 +61,7 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:top` | Display container processes | `/docker:top api` |
 | `/docker:port` | List port mappings | `/docker:port api` |
 | `/docker:system` | System info and disk usage | `/docker:system df` |
+| `/docker:events` | Real-time Docker daemon events | `/docker:events --filter container=api` |
 | `/docker:context` | Manage multi-environment contexts | `/docker:context use prod` |
 | `/docker:tag` | Tag images | `/docker:tag myapp:latest myapp:v1` |
 | `/docker:cp` | Copy files to/from containers | `/docker:cp api:/logs ./` |
@@ -167,6 +169,12 @@ Pull images from container registries.
 - Supports Docker Hub, ECR, GCR, GitHub
 - Warns when pulling `latest` tag
 
+#### `/docker:search <term>`
+Search Docker Hub for images.
+- `--filter is-official=true` - Official images only
+- `--filter stars=100` - Minimum star count
+- `--limit` - Max results (default 25)
+
 #### `/docker:images [repository]`
 List Docker images on the system.
 - `--all` - Show intermediate layers
@@ -252,6 +260,12 @@ Manage Docker system resources.
 - `df` - Show disk usage
 - `prune` - Remove unused data
 - `info` - System information
+
+#### `/docker:events [options]`
+Get real-time events from the Docker daemon.
+- `--filter container=name` - Filter by container
+- `--filter type=container` - Filter by event type
+- `--since 1h` - Historical events
 
 #### `/docker:context <operation> [name]`
 Manage Docker contexts for multi-environment.

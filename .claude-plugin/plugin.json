@@ -1,6 +1,6 @@
 {
   "name": "docker",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "description": "Docker container management plugin for local development - build, run, debug, and optimize containers",
   "author": {
     "name": "User"
