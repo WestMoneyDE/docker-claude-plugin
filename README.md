@@ -49,6 +49,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:network` | Manage Docker networks | `/docker:network ls` |
 | `/docker:volume` | Manage Docker volumes | `/docker:volume ls` |
 | `/docker:stats` | Live resource usage stats | `/docker:stats api` |
+| `/docker:top` | Display container processes | `/docker:top api` |
+| `/docker:port` | List port mappings | `/docker:port api` |
 | `/docker:system` | System info and disk usage | `/docker:system df` |
 | `/docker:context` | Manage multi-environment contexts | `/docker:context use prod` |
 | `/docker:tag` | Tag images | `/docker:tag myapp:latest myapp:v1` |
@@ -181,6 +183,16 @@ Manage Docker volumes for persistent data.
 Display live resource usage statistics.
 - CPU, memory, network, disk I/O
 - `--no-stream` - Single snapshot
+
+#### `/docker:top <container>`
+Display running processes in a container.
+- Shows PID, user, CPU, memory, command
+- Supports ps options for custom formats
+
+#### `/docker:port <container>`
+List port mappings for a container.
+- Shows host:container port bindings
+- Query specific port with protocol
 
 #### `/docker:system <operation>`
 Manage Docker system resources.
