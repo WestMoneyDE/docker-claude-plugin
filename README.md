@@ -46,6 +46,7 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:volume` | Manage Docker volumes | `/docker:volume ls` |
 | `/docker:stats` | Live resource usage stats | `/docker:stats api` |
 | `/docker:system` | System info and disk usage | `/docker:system df` |
+| `/docker:context` | Manage multi-environment contexts | `/docker:context use prod` |
 | `/docker:tag` | Tag images | `/docker:tag myapp:latest myapp:v1` |
 | `/docker:cp` | Copy files to/from containers | `/docker:cp api:/logs ./` |
 | `/docker:history` | Show image layer history | `/docker:history nginx` |
@@ -162,6 +163,12 @@ Manage Docker system resources.
 - `df` - Show disk usage
 - `prune` - Remove unused data
 - `info` - System information
+
+#### `/docker:context <operation> [name]`
+Manage Docker contexts for multi-environment.
+- `ls` - List contexts
+- `create` - Create context (SSH, TCP)
+- `use` - Switch environment
 
 #### `/docker:tag <source> <target>`
 Create a new tag for an image.
