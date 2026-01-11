@@ -30,6 +30,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 |---------|-------------|---------|
 | `/docker:build` | Build Docker images | `/docker:build myapp:v1` |
 | `/docker:run` | Run containers | `/docker:run nginx --port 8080:80` |
+| `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
+| `/docker:stop` | Stop running containers | `/docker:stop api` |
 | `/docker:compose` | Compose operations | `/docker:compose up` |
 | `/docker:logs` | View container logs | `/docker:logs api --tail 50` |
 | `/docker:ps` | List containers | `/docker:ps --all` |
@@ -50,6 +52,17 @@ Run containers with common options.
 - `-e KEY=VALUE` - Environment variables
 - `--name` - Container name
 - Defaults to detached mode with auto-cleanup
+
+#### `/docker:exec <container> [command]`
+Execute commands inside running containers.
+- Opens interactive shell by default
+- Supports any command execution
+- Use for debugging and inspection
+
+#### `/docker:stop <container> [options]`
+Stop running containers gracefully.
+- `--all` - Stop all running containers
+- `--time` - Seconds to wait before force kill
 
 #### `/docker:compose <operation> [service]`
 Manage Docker Compose applications.
