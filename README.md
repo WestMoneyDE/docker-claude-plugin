@@ -34,6 +34,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:create` | Create container without starting | `/docker:create --name api nginx` |
 | `/docker:start` | Start stopped containers | `/docker:start api` |
 | `/docker:attach` | Attach to running container | `/docker:attach api` |
+| `/docker:commit` | Create image from container changes | `/docker:commit api myapp:v2` |
+| `/docker:export` | Export container filesystem to tar | `/docker:export api -o api.tar` |
 | `/docker:stop` | Stop running containers | `/docker:stop api` |
 | `/docker:pause` | Pause container processes | `/docker:pause api` |
 | `/docker:unpause` | Unpause paused containers | `/docker:unpause api` |
@@ -98,6 +100,18 @@ Create a container without starting it.
 Attach to a running container's streams.
 - Detach with `Ctrl+P, Ctrl+Q`
 - `--no-stdin` for view-only
+
+#### `/docker:commit <container> [repository[:tag]]`
+Create a new image from a container's changes.
+- `--change` - Apply Dockerfile instruction to image
+- `--message` - Commit message
+- Great for saving manual configuration or debugging
+
+#### `/docker:export <container> -o <file.tar>`
+Export a container's filesystem as a tar archive.
+- Creates flat filesystem (no image layers)
+- Use `docker import` to create image from archive
+- Useful for backups, migrations, security audits
 
 #### `/docker:start <container>`
 Start stopped containers.
