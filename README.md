@@ -46,8 +46,10 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
 | `/docker:pull` | Pull images from registries | `/docker:pull nginx:alpine` |
 | `/docker:images` | List local images | `/docker:images` |
+| `/docker:rmi` | Remove images | `/docker:rmi myapp:old` |
 | `/docker:save` | Save images to tar archive | `/docker:save myapp -o myapp.tar` |
 | `/docker:load` | Load images from tar archive | `/docker:load -i myapp.tar` |
+| `/docker:import` | Import tarball as filesystem image | `/docker:import backup.tar myapp:v1` |
 | `/docker:inspect` | Show container/image details | `/docker:inspect api` |
 | `/docker:compose` | Compose operations | `/docker:compose up` |
 | `/docker:logs` | View container logs | `/docker:logs api --tail 50` |
@@ -170,6 +172,12 @@ List Docker images on the system.
 - `--all` - Show intermediate layers
 - `--filter dangling=true` - Show untagged images
 
+#### `/docker:rmi <image> [image...]`
+Remove one or more Docker images.
+- `--force` - Force removal even if in use
+- `--no-prune` - Don't delete untagged parents
+- Use `/docker:clean` for bulk cleanup
+
 #### `/docker:save <image> -o <file.tar>`
 Save images to a tar archive.
 - Offline transfer and backup
@@ -179,6 +187,12 @@ Save images to a tar archive.
 Load images from a tar archive.
 - Restore backups and offline installs
 - Works with compressed archives
+
+#### `/docker:import <file|URL> [repository[:tag]]`
+Import tarball contents as a filesystem image.
+- Creates single-layer image (no history)
+- Use `--change` to apply Dockerfile instructions
+- Counterpart to `docker export`
 
 #### `/docker:inspect <container|image>`
 Display detailed information about containers or images.
