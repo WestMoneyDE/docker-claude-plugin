@@ -39,6 +39,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:compose` | Compose operations | `/docker:compose up` |
 | `/docker:logs` | View container logs | `/docker:logs api --tail 50` |
 | `/docker:ps` | List containers | `/docker:ps --all` |
+| `/docker:network` | Manage Docker networks | `/docker:network ls` |
+| `/docker:volume` | Manage Docker volumes | `/docker:volume ls` |
 | `/docker:push` | Push to registries | `/docker:push myapp:v1 ghcr.io/user` |
 | `/docker:clean` | Remove unused resources | `/docker:clean --all` |
 
@@ -106,6 +108,20 @@ View container logs.
 List Docker containers.
 - `--all` - Include stopped containers
 - `--filter` - Filter by status
+
+#### `/docker:network <operation> [name]`
+Manage Docker networks.
+- `ls` - List networks
+- `create` - Create network
+- `rm` - Remove network
+- `connect/disconnect` - Attach containers
+
+#### `/docker:volume <operation> [name]`
+Manage Docker volumes for persistent data.
+- `ls` - List volumes
+- `create` - Create volume
+- `rm` - Remove volume
+- `prune` - Remove unused volumes
 
 #### `/docker:push <image:tag> [registry]`
 Push images to container registries.
