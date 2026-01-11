@@ -37,6 +37,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:unpause` | Unpause paused containers | `/docker:unpause api` |
 | `/docker:restart` | Restart containers | `/docker:restart api` |
 | `/docker:rm` | Remove stopped containers | `/docker:rm api` |
+| `/docker:rename` | Rename a container | `/docker:rename old-name new-name` |
+| `/docker:update` | Update container resources | `/docker:update api --memory 1g` |
 | `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
 | `/docker:pull` | Pull images from registries | `/docker:pull nginx:alpine` |
 | `/docker:images` | List local images | `/docker:images` |
@@ -94,6 +96,17 @@ Start stopped containers.
 Remove stopped containers.
 - `--force` - Force remove running containers
 - `--volumes` - Also remove anonymous volumes
+
+#### `/docker:rename <old> <new>`
+Rename a container.
+- Works on running and stopped containers
+- Must be unique name
+
+#### `/docker:update <container> [options]`
+Update container resource limits.
+- `--memory` - Memory limit (512m, 1g)
+- `--cpus` - CPU limit (0.5, 2)
+- `--restart` - Restart policy
 
 #### `/docker:exec <container> [command]`
 Execute commands inside running containers.
