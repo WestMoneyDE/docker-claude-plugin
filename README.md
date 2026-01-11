@@ -33,6 +33,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:run` | Run containers | `/docker:run nginx --port 8080:80` |
 | `/docker:start` | Start stopped containers | `/docker:start api` |
 | `/docker:stop` | Stop running containers | `/docker:stop api` |
+| `/docker:pause` | Pause container processes | `/docker:pause api` |
+| `/docker:unpause` | Unpause paused containers | `/docker:unpause api` |
 | `/docker:restart` | Restart containers | `/docker:restart api` |
 | `/docker:rm` | Remove stopped containers | `/docker:rm api` |
 | `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
@@ -101,6 +103,16 @@ Execute commands inside running containers.
 Stop running containers gracefully.
 - `--all` - Stop all running containers
 - `--time` - Seconds to wait before force kill
+
+#### `/docker:pause <container>`
+Pause all processes in a container.
+- Freezes without terminating
+- Memory and state preserved
+
+#### `/docker:unpause <container>`
+Resume paused containers.
+- Instant resumption
+- Processes continue from where paused
 
 #### `/docker:restart <container>`
 Restart running containers.
