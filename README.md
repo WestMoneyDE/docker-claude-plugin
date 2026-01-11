@@ -43,6 +43,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:volume` | Manage Docker volumes | `/docker:volume ls` |
 | `/docker:stats` | Live resource usage stats | `/docker:stats api` |
 | `/docker:system` | System info and disk usage | `/docker:system df` |
+| `/docker:tag` | Tag images | `/docker:tag myapp:latest myapp:v1` |
+| `/docker:cp` | Copy files to/from containers | `/docker:cp api:/logs ./` |
 | `/docker:push` | Push to registries | `/docker:push myapp:v1 ghcr.io/user` |
 | `/docker:clean` | Remove unused resources | `/docker:clean --all` |
 
@@ -135,6 +137,16 @@ Manage Docker system resources.
 - `df` - Show disk usage
 - `prune` - Remove unused data
 - `info` - System information
+
+#### `/docker:tag <source> <target>`
+Create a new tag for an image.
+- Prepare images for registry push
+- Version tagging for releases
+
+#### `/docker:cp <src> <dest>`
+Copy files between container and host.
+- `container:/path` for container paths
+- Works with running or stopped containers
 
 #### `/docker:push <image:tag> [registry]`
 Push images to container registries.
