@@ -30,9 +30,11 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 |---------|-------------|---------|
 | `/docker:build` | Build Docker images | `/docker:build myapp:v1` |
 | `/docker:run` | Run containers | `/docker:run nginx --port 8080:80` |
-| `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
+| `/docker:start` | Start stopped containers | `/docker:start api` |
 | `/docker:stop` | Stop running containers | `/docker:stop api` |
 | `/docker:restart` | Restart containers | `/docker:restart api` |
+| `/docker:rm` | Remove stopped containers | `/docker:rm api` |
+| `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
 | `/docker:pull` | Pull images from registries | `/docker:pull nginx:alpine` |
 | `/docker:images` | List local images | `/docker:images` |
 | `/docker:inspect` | Show container/image details | `/docker:inspect api` |
@@ -66,6 +68,16 @@ Run containers with common options.
 - `-e KEY=VALUE` - Environment variables
 - `--name` - Container name
 - Defaults to detached mode with auto-cleanup
+
+#### `/docker:start <container>`
+Start stopped containers.
+- `--attach` - Attach to output
+- `--interactive` - Interactive mode
+
+#### `/docker:rm <container>`
+Remove stopped containers.
+- `--force` - Force remove running containers
+- `--volumes` - Also remove anonymous volumes
 
 #### `/docker:exec <container> [command]`
 Execute commands inside running containers.
