@@ -29,6 +29,7 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | Command | Description | Example |
 |---------|-------------|---------|
 | `/docker:build` | Build Docker images | `/docker:build myapp:v1` |
+| `/docker:buildx` | Multi-platform builds | `/docker:buildx build --platform linux/amd64,linux/arm64` |
 | `/docker:run` | Run containers | `/docker:run nginx --port 8080:80` |
 | `/docker:start` | Start stopped containers | `/docker:start api` |
 | `/docker:stop` | Stop running containers | `/docker:stop api` |
@@ -63,6 +64,12 @@ Build Docker images from a Dockerfile.
 - Auto-detects Dockerfile in current directory
 - Supports `--no-cache` for fresh builds
 - Shows build progress and final image size
+
+#### `/docker:buildx <operation> [options]`
+Build multi-platform images with BuildKit.
+- `--platform linux/amd64,linux/arm64` - Target platforms
+- `--push` - Push to registry after build
+- `--load` - Load locally (single platform)
 
 #### `/docker:run <image> [options]`
 Run containers with common options.
