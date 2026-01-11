@@ -38,6 +38,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
 | `/docker:pull` | Pull images from registries | `/docker:pull nginx:alpine` |
 | `/docker:images` | List local images | `/docker:images` |
+| `/docker:save` | Save images to tar archive | `/docker:save myapp -o myapp.tar` |
+| `/docker:load` | Load images from tar archive | `/docker:load -i myapp.tar` |
 | `/docker:inspect` | Show container/image details | `/docker:inspect api` |
 | `/docker:compose` | Compose operations | `/docker:compose up` |
 | `/docker:logs` | View container logs | `/docker:logs api --tail 50` |
@@ -114,6 +116,16 @@ Pull images from container registries.
 List Docker images on the system.
 - `--all` - Show intermediate layers
 - `--filter dangling=true` - Show untagged images
+
+#### `/docker:save <image> -o <file.tar>`
+Save images to a tar archive.
+- Offline transfer and backup
+- Supports multiple images
+
+#### `/docker:load -i <file.tar>`
+Load images from a tar archive.
+- Restore backups and offline installs
+- Works with compressed archives
 
 #### `/docker:inspect <container|image>`
 Display detailed information about containers or images.
