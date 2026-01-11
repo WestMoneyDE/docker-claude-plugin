@@ -41,6 +41,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:ps` | List containers | `/docker:ps --all` |
 | `/docker:network` | Manage Docker networks | `/docker:network ls` |
 | `/docker:volume` | Manage Docker volumes | `/docker:volume ls` |
+| `/docker:stats` | Live resource usage stats | `/docker:stats api` |
+| `/docker:system` | System info and disk usage | `/docker:system df` |
 | `/docker:push` | Push to registries | `/docker:push myapp:v1 ghcr.io/user` |
 | `/docker:clean` | Remove unused resources | `/docker:clean --all` |
 
@@ -122,6 +124,17 @@ Manage Docker volumes for persistent data.
 - `create` - Create volume
 - `rm` - Remove volume
 - `prune` - Remove unused volumes
+
+#### `/docker:stats [container]`
+Display live resource usage statistics.
+- CPU, memory, network, disk I/O
+- `--no-stream` - Single snapshot
+
+#### `/docker:system <operation>`
+Manage Docker system resources.
+- `df` - Show disk usage
+- `prune` - Remove unused data
+- `info` - System information
 
 #### `/docker:push <image:tag> [registry]`
 Push images to container registries.
