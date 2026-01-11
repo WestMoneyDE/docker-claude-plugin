@@ -47,6 +47,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:cp` | Copy files to/from containers | `/docker:cp api:/logs ./` |
 | `/docker:history` | Show image layer history | `/docker:history nginx` |
 | `/docker:diff` | Show container filesystem changes | `/docker:diff api` |
+| `/docker:kill` | Kill containers immediately | `/docker:kill api` |
+| `/docker:wait` | Wait for containers to stop | `/docker:wait job` |
 | `/docker:push` | Push to registries | `/docker:push myapp:v1 ghcr.io/user` |
 | `/docker:clean` | Remove unused resources | `/docker:clean --all` |
 
@@ -159,6 +161,16 @@ Show image layer history.
 Show container filesystem changes.
 - `A` - Added, `C` - Changed, `D` - Deleted
 - Useful for debugging and auditing
+
+#### `/docker:kill <container> [--signal]`
+Kill containers immediately with a signal.
+- Default: SIGKILL (immediate termination)
+- `--signal SIGHUP` - Reload config (nginx)
+
+#### `/docker:wait <container>`
+Wait for containers to stop, return exit codes.
+- Blocks until container exits
+- Useful in CI/CD scripts
 
 #### `/docker:push <image:tag> [registry]`
 Push images to container registries.
