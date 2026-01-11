@@ -32,6 +32,8 @@ cp -r /home/administrator/docker ~/.claude/plugins/
 | `/docker:run` | Run containers | `/docker:run nginx --port 8080:80` |
 | `/docker:exec` | Execute commands in container | `/docker:exec api /bin/sh` |
 | `/docker:stop` | Stop running containers | `/docker:stop api` |
+| `/docker:pull` | Pull images from registries | `/docker:pull nginx:alpine` |
+| `/docker:inspect` | Show container/image details | `/docker:inspect api` |
 | `/docker:compose` | Compose operations | `/docker:compose up` |
 | `/docker:logs` | View container logs | `/docker:logs api --tail 50` |
 | `/docker:ps` | List containers | `/docker:ps --all` |
@@ -63,6 +65,16 @@ Execute commands inside running containers.
 Stop running containers gracefully.
 - `--all` - Stop all running containers
 - `--time` - Seconds to wait before force kill
+
+#### `/docker:pull <image[:tag]>`
+Pull images from container registries.
+- Supports Docker Hub, ECR, GCR, GitHub
+- Warns when pulling `latest` tag
+
+#### `/docker:inspect <container|image>`
+Display detailed information about containers or images.
+- Shows state, network, mounts, config
+- `--format` for specific fields (ip, ports, env)
 
 #### `/docker:compose <operation> [service]`
 Manage Docker Compose applications.
